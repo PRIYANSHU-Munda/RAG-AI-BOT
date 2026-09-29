@@ -1,0 +1,12 @@
+services:
+  api:
+    build: { context: ., args: { WITH_ML: "0" } }   # set to "1" for Docling / sentence-transformers / HF NLI
+    env_file: .env
+    ports: ["8000:8000"]
+    volumes: ["./data:/app/data", "./seed_data:/app/seed_data"]
+    depends_on: [ollama]
+  ollama:                     # local LLM; run `docker compose exec ollama ollama pull llama3.1:8b-instruct-q4_K_M`
+    image: ollama/ollama:latest
+    volumes: ["ollama:/root/.ollama"]
+    profiles: ["llm"]
+volumes: { ollama: {} }

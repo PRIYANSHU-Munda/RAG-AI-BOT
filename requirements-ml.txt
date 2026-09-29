@@ -1,0 +1,6 @@
+# optional heavy backends (enable via .env)
+docling>=2.0            # PARSER_BACKEND=auto|docling  (primary PDF layout/table parser)
+pypdf>=4.0              # degraded PDF fallback
+sentence-transformers>=3.0   # EMBED_BACKEND=st, RERANK_BACKEND=st
+transformers>=4.40      # NLI_BACKEND=hf
+torch
